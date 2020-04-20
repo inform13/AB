@@ -18,17 +18,20 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private  NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private String browser;
 
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
 
 
   public void init() {
-    String browser = BrowserType.FIREFOX;
       if (browser == BrowserType.FIREFOX) {
-      wd = new FirefoxDriver();
+        wd = new FirefoxDriver();
       } else if (browser == BrowserType.CHROME) {
-      wd = new ChromeDriver();
+        wd = new ChromeDriver();
       } else if (browser == BrowserType.IE) {
-      wd = new InternetExplorerDriver();
+        wd = new InternetExplorerDriver();
       }
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
