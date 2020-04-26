@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -55,5 +56,36 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  protected void returnToContactPage() {
+      wd.findElement(By.linkText("home page")).click();
+  }
+
+  protected void submitContactCreation() {
+      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+
+  protected void fillContactForm(ContactData contactData) {
+      wd.findElement(By.name("firstname")).click();
+      wd.findElement(By.name("firstname")).clear();
+      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
+      wd.findElement(By.name("lastname")).click();
+      wd.findElement(By.name("lastname")).clear();
+      wd.findElement(By.name("lastname")).sendKeys(contactData.getSecond_name());
+      wd.findElement(By.name("email")).click();
+      wd.findElement(By.name("email")).clear();
+      wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
+      if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).isSelected()) {
+          wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).click();
+      }
+  }
+
+  protected void initContactCreation() {
+      wd.findElement(By.linkText("add new")).click();
+  }
+
+  protected void gotoHomePage() {
+      wd.findElement(By.linkText("home")).click();
   }
 }
