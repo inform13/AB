@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class TestBase extends ApplicationManager{
+public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 

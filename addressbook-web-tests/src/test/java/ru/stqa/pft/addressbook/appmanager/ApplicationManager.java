@@ -58,15 +58,15 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  protected void returnToContactPage() {
+  public void returnToContactPage() {
       wd.findElement(By.linkText("home page")).click();
   }
 
-  protected void submitContactCreation() {
+  public void submitContactCreation() {
       wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  protected void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData) {
       wd.findElement(By.name("firstname")).click();
       wd.findElement(By.name("firstname")).clear();
       wd.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
@@ -81,11 +81,11 @@ public class ApplicationManager {
       }
   }
 
-  protected void initContactCreation() {
+  public void initContactCreation() {
       wd.findElement(By.linkText("add new")).click();
   }
 
-  protected void gotoHomePage() {
+  public void gotoHomePage() {
       wd.findElement(By.linkText("home")).click();
   }
 }
