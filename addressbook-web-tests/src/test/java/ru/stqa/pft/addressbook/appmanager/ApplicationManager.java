@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+  private ContactHelper contactHelper;
   WebDriver wd;
 
   private SessionHelper sessionHelper;
@@ -39,11 +40,11 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
+    contactHelper = new ContactHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
-
 
 
   public void stop() {
@@ -58,34 +59,11 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public void returnToContactPage() {
-      wd.findElement(By.linkText("home page")).click();
-  }
-
-  public void submitContactCreation() {
-      wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-  }
-
-  public void fillContactForm(ContactData contactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(contactData.getSecond_name());
-      wd.findElement(By.name("email")).click();
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-      if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).isSelected()) {
-          wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).click();
-      }
-  }
-
-  public void initContactCreation() {
-      wd.findElement(By.linkText("add new")).click();
-  }
-
   public void gotoHomePage() {
       wd.findElement(By.linkText("home")).click();
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
