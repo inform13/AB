@@ -59,9 +59,6 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public void gotoHomePage() {
-      wd.findElement(By.linkText("home")).click();
-  }
 
   public ContactHelper getContactHelper() {
     return contactHelper;
