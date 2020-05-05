@@ -15,9 +15,8 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  private ContactHelper contactHelper;
   WebDriver wd;
-
+  private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private  NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
@@ -26,7 +25,6 @@ public class ApplicationManager {
   public ApplicationManager(String browser) {
     this.browser = browser;
   }
-
 
   public void init() {
       if (Objects.equals(browser, BrowserType.FIREFOX)) {
@@ -46,7 +44,6 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-
   public void stop() {
     wd.quit();
   }
@@ -58,7 +55,6 @@ public class ApplicationManager {
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }
-
 
   public ContactHelper getContactHelper() {
     return contactHelper;

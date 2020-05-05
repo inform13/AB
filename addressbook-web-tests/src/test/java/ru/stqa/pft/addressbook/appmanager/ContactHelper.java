@@ -4,11 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper {
-  WebDriver wd;
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
   public void returnToContactPage() {
@@ -23,10 +22,9 @@ public class ContactHelper {
     type(By.name("firstname"), contactData.getFirst_name());
     type(By.name("lastname"), contactData.getSecond_name());
     type(By.name("email"), contactData.getEmail());
-
   }
 
-  private void type(By locator, String text) {
+  public void type(By locator, String text) {
     wd.findElement(locator).click();
     wd.findElement(locator).clear();
     wd.findElement(locator).sendKeys(text);
@@ -43,12 +41,11 @@ public class ContactHelper {
   }
 
   public void initContactModification() {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
   }
 
-
   public void submitContactModification() {
-    wd.findElement(By.name("update")).click();
+    click(By.name("update"));
     }
 
 
