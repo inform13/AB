@@ -20,21 +20,37 @@ public class ContactHelper {
   }
 
   public void fillContactForm(ContactData contactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(contactData.getFirst_name());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(contactData.getSecond_name());
-      wd.findElement(By.name("email")).click();
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-      if (!wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).isSelected()) {
-          wd.findElement(By.xpath("//div[@id='content']/form/select[5]//option[5]")).click();
-      }
+    type(By.name("firstname"), contactData.getFirst_name());
+    type(By.name("lastname"), contactData.getSecond_name());
+    type(By.name("email"), contactData.getEmail());
+
+  }
+
+  private void type(By locator, String text) {
+    wd.findElement(locator).click();
+    wd.findElement(locator).clear();
+    wd.findElement(locator).sendKeys(text);
   }
 
   public void initContactCreation() {
       wd.findElement(By.linkText("add new")).click();
   }
+
+  public void selectContact() {
+    if (!wd.findElement(By.id("22")).isSelected()) {
+      wd.findElement(By.id("22")).click();
+    }
+  }
+
+  public void initContactModification() {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+  }
+
+
+  public void submitContactModification() {
+    wd.findElement(By.name("update")).click();
+    }
+
+
+
 }
