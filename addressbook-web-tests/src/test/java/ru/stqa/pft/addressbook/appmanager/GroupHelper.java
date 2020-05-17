@@ -32,9 +32,9 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  public void selectGroup() {
-    click(By.name("selected[]"));
-      //if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
+         //if (!wd.findElement(By.xpath("//div[@id='content']/form/span[2]/input")).isSelected()) {
         //click(By.xpath("//div[@id='content']/form/span[2]/input"));
       }
 
