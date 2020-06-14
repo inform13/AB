@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase{
 
-    @Test
+    @Test (enabled = false)
     public void testContactCreation() {
         app.getNavigationHelper().gotoHomePage();
         int before = app.getContactHelper().getContactCount();
