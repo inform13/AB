@@ -4,13 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.List;
-
 public class ContactCreationTests extends TestBase{
 
     @Test (enabled = false)
     public void testContactCreation() {
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         int before = app.getContactHelper().getContactCount();
         //List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().createContact(new ContactData("Ekaterina", "Karikova", "karikova_e@mail.ru", "test1"), true );
