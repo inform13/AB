@@ -13,22 +13,22 @@ public class GroupDeletionTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().groupPage();
-        if (app.Group().List().size() == 0) {
-            app.Group().create(new GroupData().withName("test1"));
+        if (app.group().list().size() == 0) {
+            app.group().create(new GroupData("test1", null,null));
         }
     }
 
     @Test
     public void testGroupDeletion() {
-        app.goTo().groupPage();
-        List<GroupData> before = app.Group().List();
+        //app.goTo().groupPage();
+        List<GroupData> before = app.group().list();
         int index = before.size() - 1;
-        app.Group().delete(index);
-        List<GroupData> after = app.Group().List();
+        app.group().delete(index);
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size() - 1);
 
         before.remove(index);
-       Assert.assertEquals(before,after);
+        Assert.assertEquals(before,after);
         }
 
 
